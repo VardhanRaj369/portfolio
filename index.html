@@ -60,23 +60,48 @@
             z-index: 1000;
         }
 
-        nav a {
-            margin-left: 25px;
+        nav h2 {
+            margin: 0;
+            font-size: 20px;
+        }
+
+        nav .links {
+            display: flex;
+            gap: 25px;
+        }
+
+        nav .links a {
             font-weight: 500;
         }
 
-        body.light-mode nav {
-            background: rgba(255,255,255,0.7);
+        /* HAMBURGER MENU (only visible on mobile) */
+        .menu-btn {
+            display: none;
+            font-size: 26px;
+            cursor: pointer;
+            color: var(--accent);
         }
 
-        .toggle-btn {
-            padding: 8px 15px;
+        /* DROPDOWN MENU (mobile) */
+        .dropdown {
+            display: none;
+            flex-direction: column;
+            background: var(--card);
+            margin-top: 10px;
+            border-radius: 10px;
+            padding: 10px 0;
+            box-shadow: 0 0 10px var(--accent);
+        }
+
+        .dropdown a {
+            padding: 12px 20px;
+            color: var(--text);
+            font-size: 16px;
+        }
+
+        .dropdown a:hover {
             background: var(--accent);
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-            color: white;
-            font-size: 14px;
+            color: black;
         }
 
         /* HERO SECTION */
@@ -153,9 +178,10 @@
             box-shadow: 0 0 15px var(--accent);
         }
 
-        .skill-box i, .skill-box svg {
-            font-size: 38px;
-            display: block;
+        .skill-box svg,
+        .skill-box i {
+            width: 38px;
+            height: 38px;
             margin: 0 auto 10px auto;
         }
 
@@ -186,7 +212,6 @@
             margin-bottom: 15px;
         }
 
-        /* FOOTER */
         footer {
             text-align: center;
             padding: 20px;
@@ -194,20 +219,20 @@
             color: #888;
         }
 
-        /* MOBILE RESPONSIVE FIXES */
+        /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
 
+            /* Show hamburger, hide links */
+            .menu-btn {
+                display: block;
+            }
+
+            nav .links {
+                display: none;
+            }
+
             nav {
-                padding: 12px 5%;
-            }
-
-            nav h2 {
-                font-size: 18px;
-            }
-
-            nav a {
-                margin-left: 12px;
-                font-size: 13px;
+                padding: 15px 8%;
             }
 
             .hero {
@@ -239,32 +264,11 @@
                 gap: 15px;
             }
 
-            .skill-box {
-                padding: 15px;
-                font-size: 14px;
-            }
-
-            .skill-box svg, .skill-box i {
-                width: 32px;
-                height: 32px;
-            }
-
             .projects {
                 grid-template-columns: 1fr;
                 gap: 25px;
             }
-
-            .project-card img {
-                height: 180px;
-                object-fit: cover;
-            }
-
-            footer {
-                font-size: 13px;
-                padding: 15px;
-            }
         }
-
     </style>
 </head>
 
@@ -273,16 +277,28 @@
     <!-- Navbar -->
     <nav>
         <h2>Emmadi Leelavardhan Raj</h2>
-        <div>
+
+        <!-- Desktop Links -->
+        <div class="links">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
             <a href="#projects">Projects</a>
             <a href="#contact">Contact</a>
         </div>
-        <button class="toggle-btn" onclick="toggleTheme()">Light/Dark</button>
+
+        <!-- Mobile Menu Button -->
+        <div class="menu-btn" onclick="toggleMenu()">☰</div>
     </nav>
 
-    <!-- Hero Section -->
+    <!-- Dropdown Menu (Mobile Only) -->
+    <div id="dropdownMenu" class="dropdown" style="display:none;">
+        <a href="#about" onclick="toggleMenu()">About</a>
+        <a href="#skills" onclick="toggleMenu()">Skills</a>
+        <a href="#projects" onclick="toggleMenu()">Projects</a>
+        <a href="#contact" onclick="toggleMenu()">Contact</a>
+    </div>
+
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-text">
             <h1>Hi, I'm <span class="highlight">Leelavardhan</span></h1>
@@ -292,7 +308,7 @@
 
             <br>
 
-            <!-- Resume Download Button -->
+            <!-- Resume Download -->
             <a class="btn neon-hover" href="Leelavardhan_Resume.pdf" download style="margin-top:15px;">
                 Download Resume
             </a>
@@ -301,16 +317,16 @@
         <img src="https://via.placeholder.com/320" alt="Profile Image">
     </section>
 
-    <!-- About Section -->
+    <!-- About -->
     <section id="about">
         <h2>About Me</h2>
         <p style="margin-top:20px; line-height:1.8;">
-            I am a Machine Learning & AI developer passionate about real-world applications using
+            I am a Machine Learning & AI developer passionate about building real-world applications using
             NLP, computer vision, deep learning, and backend systems.
         </p>
     </section>
 
-    <!-- Skills Section -->
+    <!-- Skills -->
     <section id="skills">
         <h2>Skills</h2>
 
@@ -343,9 +359,9 @@
         <h3 style="margin-top:40px;">Data Visualization</h3>
         <div class="skills-grid">
 
-            <!-- Tableau Inline Icon -->
+            <!-- Tableau Icon -->
             <div class="skill-box">
-                <svg width="45" height="45" viewBox="0 0 48 48" fill="none">
+                <svg width="38" height="38" viewBox="0 0 48 48">
                     <path fill="#E8762D" d="M22 4h4v6h-4z"/>
                     <path fill="#5C9DED" d="M22 38h4v6h-4z"/>
                     <path fill="#5C9DED" d="M4 22h6v4H4z"/>
@@ -359,9 +375,9 @@
                 Tableau
             </div>
 
-            <!-- Power BI Inline Icon -->
+            <!-- Power BI Icon -->
             <div class="skill-box">
-                <svg width="45" height="45" viewBox="0 0 48 48" fill="none">
+                <svg width="38" height="38" viewBox="0 0 48 48">
                     <rect x="4" y="18" width="6" height="20" rx="2" fill="#F2C811"/>
                     <rect x="14" y="10" width="6" height="28" rx="2" fill="#F2C811"/>
                     <rect x="24" y="14" width="6" height="24" rx="2" fill="#F2C811"/>
@@ -381,48 +397,49 @@
 
     </section>
 
-    <!-- Projects Section -->
+    <!-- Projects -->
     <section id="projects">
         <h2>Projects</h2>
 
         <div class="projects">
-
             <div class="project-card">
-                <img src="https://via.placeholder.com/400x220" alt="Project Image">
-                <div class="project-title">AI Workout Tracker</div>
+                <img src="https://via.placeholder.com/400x220" alt="Project">
+                <h3>AI Workout Tracker</h3>
                 <p>Real-time pose detection using MediaPipe + Streamlit.</p>
                 <a class="btn neon-hover" href="https://github.com/VardhanRaj369/AI_Workout_Tracker">GitHub</a>
             </div>
 
             <div class="project-card">
-                <img src="https://via.placeholder.com/400x220" alt="Project Image">
-                <div class="project-title">MoodAI (NLP)</div>
+                <img src="https://via.placeholder.com/400x220" alt="Project">
+                <h3>MoodAI</h3>
                 <p>Emotion detection using NLP + ML algorithms.</p>
                 <a class="btn neon-hover" href="https://github.com/VardhanRaj369/MoodAI">GitHub</a>
             </div>
-
         </div>
     </section>
 
     <!-- Contact -->
     <section id="contact">
         <h2>Contact</h2>
-
-        <div style="margin-top:20px;">
-            <p>Email: <a href="mailto:vardhanemmadi27@gmail.com">vardhanemmadi27@gmail.com</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/emmadi-leelavardhan-raj/">Click Here</a></p>
-            <p>GitHub: <a href="https://github.com/VardhanRaj369">VardhanRaj369</a></p>
-        </div>
+        <p>Email: <a href="mailto:vardhanemmadi27@gmail.com">vardhanemmadi27@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/emmadi-leelavardhan-raj/">Click Here</a></p>
+        <p>GitHub: <a href="https://github.com/VardhanRaj369">VardhanRaj369</a></p>
     </section>
 
     <footer>
         © 2025 Emmadi Leelavardhan Raj — All Rights Reserved
     </footer>
 
-    <!-- Theme Toggle Script -->
+    <!-- Scripts -->
     <script>
         function toggleTheme() {
             document.body.classList.toggle("light-mode");
+        }
+
+        // Toggle Dropdown Menu
+        function toggleMenu() {
+            const menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
         }
     </script>
 
