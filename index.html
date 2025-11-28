@@ -55,17 +55,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0,0,0,0.7);
+            background: rgba(0,0,0,0.6);
             backdrop-filter: blur(8px);
             z-index: 1000;
         }
 
         nav h2 {
             margin: 0;
-            font-size: 22px;
+            font-size: 20px;
         }
 
-        /* Desktop links */
         nav .links {
             display: flex;
             gap: 25px;
@@ -75,27 +74,23 @@
             font-weight: 500;
         }
 
-        /* Mobile Menu Button */
+        /* HAMBURGER MENU (only visible on mobile) */
         .menu-btn {
             display: none;
-            font-size: 32px;
+            font-size: 26px;
             cursor: pointer;
             color: var(--accent);
         }
 
-        /* DROPDOWN MENU (Mobile only) */
+        /* DROPDOWN MENU (mobile) */
         .dropdown {
             display: none;
             flex-direction: column;
             background: var(--card);
+            margin-top: 10px;
             border-radius: 10px;
-            box-shadow: 0 0 15px var(--accent);
-            position: absolute;
-            top: 70px;
-            width: 84%;
-            left: 8%;
             padding: 10px 0;
-            z-index: 9999;
+            box-shadow: 0 0 10px var(--accent);
         }
 
         .dropdown a {
@@ -149,6 +144,10 @@
             color: #000;
         }
 
+        .neon-hover:hover {
+            box-shadow: 0 0 15px var(--accent);
+        }
+
         .hero img {
             width: 320px;
             border-radius: 50%;
@@ -171,18 +170,19 @@
             text-align: center;
             border-radius: 10px;
             font-size: 15px;
+            transition: 0.3s ease;
+        }
+
+        .skill-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 15px var(--accent);
         }
 
         .skill-box svg,
         .skill-box i {
             width: 38px;
             height: 38px;
-            margin-bottom: 10px;
-        }
-
-        .skill-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 15px var(--accent);
+            margin: 0 auto 10px auto;
         }
 
         /* PROJECTS */
@@ -219,28 +219,26 @@
             color: #888;
         }
 
-        /* MOBILE RESPONSIVENESS */
+        /* MOBILE RESPONSIVE */
         @media (max-width: 768px) {
 
-            /* SHOW HAMBURGER */
+            /* Show hamburger, hide links */
             .menu-btn {
-                display: block !important;
+                display: block;
             }
 
-            /* HIDE DESKTOP LINKS ON MOBILE */
             nav .links {
-                display: none !important;
+                display: none;
             }
 
             nav {
                 padding: 15px 8%;
             }
 
-            /* HERO */
             .hero {
                 flex-direction: column;
-                height: auto;
                 text-align: center;
+                height: auto;
                 padding-top: 120px;
             }
 
@@ -276,11 +274,11 @@
 
 <body>
 
-    <!-- NAVBAR -->
+    <!-- Navbar -->
     <nav>
         <h2>Emmadi Leelavardhan Raj</h2>
 
-        <!-- Desktop links -->
+        <!-- Desktop Links -->
         <div class="links">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
@@ -288,78 +286,162 @@
             <a href="#contact">Contact</a>
         </div>
 
-        <!-- Mobile Hamburger -->
+        <!-- Mobile Menu Button -->
         <div class="menu-btn" onclick="toggleMenu()">☰</div>
     </nav>
 
-    <!-- DROPDOWN MENU (Mobile Only) -->
-    <div id="dropdownMenu" class="dropdown">
+    <!-- Dropdown Menu (Mobile Only) -->
+    <div id="dropdownMenu" class="dropdown" style="display:none;">
         <a href="#about" onclick="toggleMenu()">About</a>
         <a href="#skills" onclick="toggleMenu()">Skills</a>
         <a href="#projects" onclick="toggleMenu()">Projects</a>
         <a href="#contact" onclick="toggleMenu()">Contact</a>
     </div>
 
-    <!-- HERO -->
+    <!-- Hero -->
     <section class="hero">
         <div class="hero-text">
             <h1>Hi, I'm <span class="highlight">Leelavardhan</span></h1>
             <h2>Machine Learning • AI • Full Stack Developer</h2>
 
-            <a class="btn" href="#projects">Explore Projects</a>
+            <a class="btn neon-hover" href="#projects">Explore Projects</a>
 
-            <br><br>
+            <br>
 
-            <a class="btn" href="Leelavardhan_Resume.pdf" download>Download Resume</a>
+            <!-- Resume Download -->
+            <a class="btn neon-hover" href="Leelavardhan_Resume.pdf" download style="margin-top:15px;">
+                Download Resume
+            </a>
         </div>
 
         <img src="https://via.placeholder.com/320" alt="Profile Image">
     </section>
 
-    <!-- ABOUT -->
+    <!-- About -->
     <section id="about">
         <h2>About Me</h2>
-        <p>
-            I am a Machine Learning & AI developer passionate about creating intelligent real-world applications
-            using NLP, Computer Vision, Deep Learning, and backend technologies.
+        <p style="margin-top:20px; line-height:1.8;">
+            I am a Machine Learning & AI developer passionate about building real-world applications using
+            NLP, computer vision, deep learning, and backend systems.
         </p>
     </section>
 
-    <!-- SKILLS -->
+    <!-- Skills -->
     <section id="skills">
         <h2>Skills</h2>
 
         <h3 style="margin-top:40px;">AI & Machine Learning</h3>
         <div class="skills-grid">
-            <div class="skill-box"><i class="devicon-python-plain"></i>Python</div>
-            <div class="skill-box"><i class="devicon-tensorflow-original"></i>TensorFlow</div>
-            <div class="skill-box"><i class="devicon-pytorch-original"></i>PyTorch</div>
-            <div class="skill-box"><i class="devicon-numpy-original"></i>NumPy</div>
-            <div class="skill-box"><i class="devicon-pandas-original"></i>Pandas</div>
-            <div class="skill-box"><i class="devicon-opencv-plain"></i>OpenCV</div>
+            <div class="skill-box"><i class="devicon-python-plain colored"></i>Python</div>
+            <div class="skill-box"><i class="devicon-tensorflow-original colored"></i>TensorFlow</div>
+            <div class="skill-box"><i class="devicon-pytorch-original colored"></i>PyTorch</div>
+            <div class="skill-box"><i class="devicon-numpy-original colored"></i>NumPy</div>
+            <div class="skill-box"><i class="devicon-pandas-original colored"></i>Pandas</div>
+            <div class="skill-box"><i class="devicon-opencv-plain colored"></i>OpenCV</div>
         </div>
 
         <h3 style="margin-top:40px;">Backend Development</h3>
         <div class="skills-grid">
-            <div class="skill-box"><i class="devicon-django-plain"></i>Django</div>
-            <div class="skill-box"><i class="devicon-flask-original"></i>Flask</div>
-            <div class="skill-box"><i class="devicon-fastapi-plain"></i>FastAPI</div>
-            <div class="skill-box"><i class="devicon-mysql-original"></i>MySQL</div>
-            <div class="skill-box"><i class="devicon-mongodb-plain"></i>MongoDB</div>
+            <div class="skill-box"><i class="devicon-django-plain colored"></i>Django</div>
+            <div class="skill-box"><i class="devicon-flask-original colored"></i>Flask</div>
+            <div class="skill-box"><i class="devicon-fastapi-plain colored"></i>FastAPI</div>
+            <div class="skill-box"><i class="devicon-mysql-original colored"></i>MySQL</div>
+            <div class="skill-box"><i class="devicon-mongodb-plain colored"></i>MongoDB</div>
         </div>
 
         <h3 style="margin-top:40px;">Frontend & Web</h3>
         <div class="skills-grid">
-            <div class="skill-box"><i class="devicon-html5-plain"></i>HTML</div>
-            <div class="skill-box"><i class="devicon-css3-plain"></i>CSS</div>
-            <div class="skill-box"><i class="devicon-javascript-plain"></i>JavaScript</div>
+            <div class="skill-box"><i class="devicon-html5-plain colored"></i>HTML</div>
+            <div class="skill-box"><i class="devicon-css3-plain colored"></i>CSS</div>
+            <div class="skill-box"><i class="devicon-javascript-plain colored"></i>JavaScript</div>
         </div>
 
         <h3 style="margin-top:40px;">Data Visualization</h3>
         <div class="skills-grid">
 
-            <!-- Tableau -->
+            <!-- Tableau Icon -->
             <div class="skill-box">
                 <svg width="38" height="38" viewBox="0 0 48 48">
                     <path fill="#E8762D" d="M22 4h4v6h-4z"/>
                     <path fill="#5C9DED" d="M22 38h4v6h-4z"/>
+                    <path fill="#5C9DED" d="M4 22h6v4H4z"/>
+                    <path fill="#E8762D" d="M38 22h6v4h-6z"/>
+                    <path fill="#2C58A6" d="M14 10h4v4h-4z"/>
+                    <path fill="#2C58A6" d="M30 34h4v4h-4z"/>
+                    <path fill="#E8762D" d="M14 34h4v4h-4z"/>
+                    <path fill="#E8762D" d="M30 10h4v4h-4z"/>
+                    <circle cx="24" cy="24" r="4" fill="#2C58A6"/>
+                </svg>
+                Tableau
+            </div>
+
+            <!-- Power BI Icon -->
+            <div class="skill-box">
+                <svg width="38" height="38" viewBox="0 0 48 48">
+                    <rect x="4" y="18" width="6" height="20" rx="2" fill="#F2C811"/>
+                    <rect x="14" y="10" width="6" height="28" rx="2" fill="#F2C811"/>
+                    <rect x="24" y="14" width="6" height="24" rx="2" fill="#F2C811"/>
+                    <rect x="34" y="8" width="6" height="30" rx="2" fill="#F2C811"/>
+                </svg>
+                Power BI
+            </div>
+
+        </div>
+
+        <h3 style="margin-top:40px;">Tools</h3>
+        <div class="skills-grid">
+            <div class="skill-box"><i class="devicon-git-plain colored"></i>Git</div>
+            <div class="skill-box"><i class="devicon-github-original colored"></i>GitHub</div>
+            <div class="skill-box"><i class="devicon-linux-plain colored"></i>Linux</div>
+        </div>
+
+    </section>
+
+    <!-- Projects -->
+    <section id="projects">
+        <h2>Projects</h2>
+
+        <div class="projects">
+            <div class="project-card">
+                <img src="https://via.placeholder.com/400x220" alt="Project">
+                <h3>AI Workout Tracker</h3>
+                <p>Real-time pose detection using MediaPipe + Streamlit.</p>
+                <a class="btn neon-hover" href="https://github.com/VardhanRaj369/AI_Workout_Tracker">GitHub</a>
+            </div>
+
+            <div class="project-card">
+                <img src="https://via.placeholder.com/400x220" alt="Project">
+                <h3>MoodAI</h3>
+                <p>Emotion detection using NLP + ML algorithms.</p>
+                <a class="btn neon-hover" href="https://github.com/VardhanRaj369/MoodAI">GitHub</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+        <h2>Contact</h2>
+        <p>Email: <a href="mailto:vardhanemmadi27@gmail.com">vardhanemmadi27@gmail.com</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/emmadi-leelavardhan-raj/">Click Here</a></p>
+        <p>GitHub: <a href="https://github.com/VardhanRaj369">VardhanRaj369</a></p>
+    </section>
+
+    <footer>
+        © 2025 Emmadi Leelavardhan Raj — All Rights Reserved
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        function toggleTheme() {
+            document.body.classList.toggle("light-mode");
+        }
+
+        // Toggle Dropdown Menu
+        function toggleMenu() {
+            const menu = document.getElementById("dropdownMenu");
+            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+        }
+    </script>
+
+</body>
+</html>
