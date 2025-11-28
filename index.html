@@ -55,7 +55,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background: rgba(0,0,0,0.6);
+            background: rgba(0,0,0,0.7);
             backdrop-filter: blur(8px);
             z-index: 1000;
         }
@@ -74,23 +74,27 @@
             font-weight: 500;
         }
 
-        /* HAMBURGER MENU (only visible on mobile) */
+        /* Mobile menu button */
         .menu-btn {
             display: none;
-            font-size: 26px;
+            font-size: 28px;
             cursor: pointer;
             color: var(--accent);
         }
 
-        /* DROPDOWN MENU (mobile) */
+        /* Dropdown menu */
         .dropdown {
             display: none;
             flex-direction: column;
             background: var(--card);
-            margin-top: 10px;
             border-radius: 10px;
             padding: 10px 0;
-            box-shadow: 0 0 10px var(--accent);
+            box-shadow: 0 0 15px var(--accent);
+            position: absolute;
+            top: 70px;
+            left: 8%;
+            width: 84%;
+            z-index: 999;
         }
 
         .dropdown a {
@@ -104,7 +108,7 @@
             color: black;
         }
 
-        /* HERO SECTION */
+        /* HERO */
         .hero {
             height: 100vh;
             display: flex;
@@ -119,7 +123,7 @@
         }
 
         .hero-text h2 {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: 300;
             color: var(--secondary);
         }
@@ -144,10 +148,6 @@
             color: #000;
         }
 
-        .neon-hover:hover {
-            box-shadow: 0 0 15px var(--accent);
-        }
-
         .hero img {
             width: 320px;
             border-radius: 50%;
@@ -167,22 +167,15 @@
             padding: 20px;
             background: var(--card);
             border: 1px solid var(--border);
-            text-align: center;
             border-radius: 10px;
-            font-size: 15px;
-            transition: 0.3s ease;
-        }
-
-        .skill-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 0 15px var(--accent);
+            text-align: center;
         }
 
         .skill-box svg,
         .skill-box i {
             width: 38px;
             height: 38px;
-            margin: 0 auto 10px auto;
+            margin-bottom: 10px;
         }
 
         /* PROJECTS */
@@ -195,78 +188,45 @@
         .project-card {
             background: var(--card);
             border: 1px solid var(--border);
-            border-radius: 12px;
             padding: 20px;
+            border-radius: 12px;
             transition: 0.3s;
-        }
-
-        .project-card:hover {
-            transform: scale(1.03);
-            border-color: var(--accent);
-            box-shadow: 0 0 15px var(--accent);
-        }
-
-        .project-card img {
-            width: 100%;
-            border-radius: 10px;
-            margin-bottom: 15px;
         }
 
         footer {
             text-align: center;
             padding: 20px;
             background: black;
-            color: #888;
+            color: #777;
         }
 
-        /* MOBILE RESPONSIVE */
+        /* MOBILE */
         @media (max-width: 768px) {
+            .menu-btn { display: block !important; }
+            nav .links { display: none !important; }
 
-            /* Show hamburger, hide links */
-            .menu-btn {
-                display: block;
-            }
-
-            nav .links {
-                display: none;
-            }
-
-            nav {
-                padding: 15px 8%;
-            }
+            nav { padding: 15px 8%; }
 
             .hero {
                 flex-direction: column;
-                text-align: center;
                 height: auto;
+                text-align: center;
                 padding-top: 120px;
             }
 
-            .hero-text h1 {
-                font-size: 34px;
-            }
+            .hero-text h1 { font-size: 34px; }
+            .hero-text h2 { font-size: 18px; }
 
-            .hero-text h2 {
-                font-size: 18px;
-            }
+            .hero img { width: 220px; }
 
-            .hero img {
-                width: 220px;
-                margin-top: 30px;
-            }
-
-            section {
-                padding: 60px 6%;
-            }
+            section { padding: 60px 6%; }
 
             .skills-grid {
                 grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
-                gap: 15px;
             }
 
             .projects {
                 grid-template-columns: 1fr;
-                gap: 25px;
             }
         }
     </style>
@@ -274,11 +234,10 @@
 
 <body>
 
-    <!-- Navbar -->
+    <!-- NAVBAR -->
     <nav>
         <h2>Emmadi Leelavardhan Raj</h2>
 
-        <!-- Desktop Links -->
         <div class="links">
             <a href="#about">About</a>
             <a href="#skills">Skills</a>
@@ -286,30 +245,26 @@
             <a href="#contact">Contact</a>
         </div>
 
-        <!-- Mobile Menu Button -->
         <div class="menu-btn" onclick="toggleMenu()">☰</div>
     </nav>
 
-    <!-- Dropdown Menu (Mobile Only) -->
-    <div id="dropdownMenu" class="dropdown" style="display:none;">
+    <!-- DROPDOWN -->
+    <div id="dropdownMenu" class="dropdown">
         <a href="#about" onclick="toggleMenu()">About</a>
         <a href="#skills" onclick="toggleMenu()">Skills</a>
         <a href="#projects" onclick="toggleMenu()">Projects</a>
         <a href="#contact" onclick="toggleMenu()">Contact</a>
     </div>
 
-    <!-- Hero -->
+    <!-- HERO -->
     <section class="hero">
         <div class="hero-text">
             <h1>Hi, I'm <span class="highlight">Leelavardhan</span></h1>
-            <h2>Machine Learning • AI • Full Stack Developer</h2>
+            <h2>Data Science • AI • Python Developer</h2>
 
-            <a class="btn neon-hover" href="#projects">Explore Projects</a>
+            <a class="btn" href="#projects">Explore Projects</a><br>
 
-            <br>
-
-            <!-- Resume Download -->
-            <a class="btn neon-hover" href="Leelavardhan_Resume.pdf" download style="margin-top:15px;">
+            <a class="btn" href="./resume.pdf" download="Leelavardhan_Raj_Resume.pdf" style="margin-top:15px;">
                 Download Resume
             </a>
         </div>
@@ -317,29 +272,35 @@
         <img src="https://via.placeholder.com/320" alt="Profile Image">
     </section>
 
-    <!-- About -->
+    <!-- ABOUT -->
     <section id="about">
         <h2>About Me</h2>
-        <p style="margin-top:20px; line-height:1.8;">
+        <p>
             I am a Machine Learning & AI developer passionate about building real-world applications using
-            NLP, computer vision, deep learning, and backend systems.
+            NLP, Computer Vision, Deep Learning, and backend systems.
         </p>
     </section>
 
-    <!-- Skills -->
+    <!-- SKILLS -->
     <section id="skills">
         <h2>Skills</h2>
 
+        <!-- AI & ML -->
         <h3 style="margin-top:40px;">AI & Machine Learning</h3>
         <div class="skills-grid">
             <div class="skill-box"><i class="devicon-python-plain colored"></i>Python</div>
+            <div class="skill-box"><i class="devicon-scikitlearn-plain colored"></i>Scikit-Learn</div>
             <div class="skill-box"><i class="devicon-tensorflow-original colored"></i>TensorFlow</div>
             <div class="skill-box"><i class="devicon-pytorch-original colored"></i>PyTorch</div>
             <div class="skill-box"><i class="devicon-numpy-original colored"></i>NumPy</div>
             <div class="skill-box"><i class="devicon-pandas-original colored"></i>Pandas</div>
+            <div class="skill-box"><i class="devicon-matplotlib-plain colored"></i>Matplotlib</div>
+            <div class="skill-box"><i class="devicon-seaborn-original colored"></i>Seaborn</div>
+            <div class="skill-box"><i class="devicon-jupyter-plain colored"></i>Jupyter Notebook</div>
             <div class="skill-box"><i class="devicon-opencv-plain colored"></i>OpenCV</div>
         </div>
 
+        <!-- BACKEND -->
         <h3 style="margin-top:40px;">Backend Development</h3>
         <div class="skills-grid">
             <div class="skill-box"><i class="devicon-django-plain colored"></i>Django</div>
@@ -349,6 +310,7 @@
             <div class="skill-box"><i class="devicon-mongodb-plain colored"></i>MongoDB</div>
         </div>
 
+        <!-- FRONTEND -->
         <h3 style="margin-top:40px;">Frontend & Web</h3>
         <div class="skills-grid">
             <div class="skill-box"><i class="devicon-html5-plain colored"></i>HTML</div>
@@ -356,10 +318,11 @@
             <div class="skill-box"><i class="devicon-javascript-plain colored"></i>JavaScript</div>
         </div>
 
+        <!-- DATA VIS -->
         <h3 style="margin-top:40px;">Data Visualization</h3>
         <div class="skills-grid">
 
-            <!-- Tableau Icon -->
+            <!-- Tableau -->
             <div class="skill-box">
                 <svg width="38" height="38" viewBox="0 0 48 48">
                     <path fill="#E8762D" d="M22 4h4v6h-4z"/>
@@ -375,7 +338,7 @@
                 Tableau
             </div>
 
-            <!-- Power BI Icon -->
+            <!-- Power BI -->
             <div class="skill-box">
                 <svg width="38" height="38" viewBox="0 0 48 48">
                     <rect x="4" y="18" width="6" height="20" rx="2" fill="#F2C811"/>
@@ -388,6 +351,7 @@
 
         </div>
 
+        <!-- Tools -->
         <h3 style="margin-top:40px;">Tools</h3>
         <div class="skills-grid">
             <div class="skill-box"><i class="devicon-git-plain colored"></i>Git</div>
@@ -397,28 +361,30 @@
 
     </section>
 
-    <!-- Projects -->
+    <!-- PROJECTS -->
     <section id="projects">
         <h2>Projects</h2>
 
         <div class="projects">
+
             <div class="project-card">
                 <img src="https://via.placeholder.com/400x220" alt="Project">
                 <h3>AI Workout Tracker</h3>
                 <p>Real-time pose detection using MediaPipe + Streamlit.</p>
-                <a class="btn neon-hover" href="https://github.com/VardhanRaj369/AI_Workout_Tracker">GitHub</a>
+                <a class="btn" href="https://github.com/VardhanRaj369/AI_Workout_Tracker">GitHub</a>
             </div>
 
             <div class="project-card">
                 <img src="https://via.placeholder.com/400x220" alt="Project">
-                <h3>MoodAI</h3>
+                <h3>MoodAI (NLP)</h3>
                 <p>Emotion detection using NLP + ML algorithms.</p>
-                <a class="btn neon-hover" href="https://github.com/VardhanRaj369/MoodAI">GitHub</a>
+                <a class="btn" href="https://github.com/VardhanRaj369/MoodAI">GitHub</a>
             </div>
+
         </div>
     </section>
 
-    <!-- Contact -->
+    <!-- CONTACT -->
     <section id="contact">
         <h2>Contact</h2>
         <p>Email: <a href="mailto:vardhanemmadi27@gmail.com">vardhanemmadi27@gmail.com</a></p>
@@ -430,16 +396,10 @@
         © 2025 Emmadi Leelavardhan Raj — All Rights Reserved
     </footer>
 
-    <!-- Scripts -->
     <script>
-        function toggleTheme() {
-            document.body.classList.toggle("light-mode");
-        }
-
-        // Toggle Dropdown Menu
         function toggleMenu() {
             const menu = document.getElementById("dropdownMenu");
-            menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+            menu.style.display = (menu.style.display === "flex") ? "none" : "flex";
         }
     </script>
 
